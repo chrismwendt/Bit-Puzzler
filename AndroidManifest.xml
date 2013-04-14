@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="1"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="15" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -22,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.bit_puzzler.PuzzleActivity"
-            android:label="@string/title_activity_puzzle" >
+            android:name="com.example.bit_puzzler.DisplayMessageActivity"
+            android:label="@string/title_activity_display_message"
+            android:parentActivityName="com.example.myfirstapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfirstapp.MainActivity" />
         </activity>
     </application>
 
