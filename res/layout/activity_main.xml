@@ -2,16 +2,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:orientation="horizontal"
+    android:orientation="vertical"
     >
-    <EditText android:id="@+id/edit_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_message"
-        android:layout_weight="1" />
+
+	
+
+	<ScrollView android:id="@+id/ScrollView01"
+	android:layout_width="wrap_content" android:layout_height="150dip">
+		<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/main_title"
+	    android:textColor="#fea"
+	    android:textSize="70px"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+	    android:typeface="serif"
+	    android:textStyle="italic">
+		</TextView>
+	</ScrollView>
+
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="sendMessage" />
+        android:onClick="sendMessage"
+        android:layout_weight="1"
+        android:text="@string/btn_start" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendMessage"
+        android:layout_weight="1"
+        android:text="@string/btn_scores" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendMessage"
+        android:layout_weight="1"
+        android:text="@string/btn_settings" />
+
 </LinearLayout>
