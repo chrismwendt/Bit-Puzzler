@@ -22,8 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.bit_puzzler.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message"
+            android:name="com.example.bit_puzzler.PuzzleActivity"
+            android:label="@string/title_activity_puzzle" >
+        </activity>
+        <activity
+            android:name="com.example.bit_puzzler.PuzzSelection"
+            android:label="@string/title_activity_puzz_selection"
             android:parentActivityName="com.example.myfirstapp.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

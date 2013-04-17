@@ -9,11 +9,12 @@ import android.widget.TextView;
 public class PuzzleActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		TextView name = (TextView)findViewById(R.id.puzzle_name);
-		Intent intent = getIntent();
-		name.setText(intent.getStringExtra("puzzle_number"));
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzzle);
+		
+		//TextView name = (TextView)findViewById(R.id.puzzle_name);
+		Intent intent = getIntent();
+		//name.setText(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
 	}
 
 	@Override
