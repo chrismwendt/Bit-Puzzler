@@ -12,13 +12,13 @@
 		<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/main_title"
-	    android:textColor="#fea"
+	    android:textColor="#e62"
 	    android:textSize="70px"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"
 	    android:typeface="serif"
-	    android:textStyle="italic">
+	    android:textStyle="bold">
 		</TextView>
 	</ScrollView>
 
@@ -26,19 +26,18 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="sendMessage"
+        android:onClick="openPuzzSelect"
         android:layout_weight="1"
         android:text="@string/btn_start" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="sendMessage"
+        android:onClick="openScoresSelect"
         android:layout_weight="1"
         android:text="@string/btn_scores" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="sendMessage"
         android:layout_weight="1"
         android:text="@string/btn_settings" />
 

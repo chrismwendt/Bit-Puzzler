@@ -2,6 +2,7 @@ package com.example.bit_puzzler;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 public class PuzzleActivity extends Activity implements OnClickListener {
 	public String correctOutput;
+	public int puzzleNumber;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,7 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		
 		//TextView name = (TextView)findViewById(R.id.puzzle_name);
 		Intent intent = getIntent();
-		//name.setText(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
+		puzzleNumber = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 1);
 		
 		TextView numberTextView = (TextView)findViewById(R.id.puzzle_number);
 		TextView titleTextView = (TextView)findViewById(R.id.puzzle_title);
@@ -33,7 +35,7 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		runButton.setOnClickListener(this);
 		
 		// TODO get these from the database
-		String number = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		String number = String.valueOf(puzzleNumber);
 		String title = "Title of puzzle goes here";
 		String description = "Description of puzzle goes here";
 		String input = "1011011";
@@ -79,17 +81,21 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 	}
 	
 	private AlertDialog makeCompleteDialog() {
+		final Context context = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Puzzle complete! Go to the next one or back to the selection page.")
                .setPositiveButton("Next", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
-						Intent intent = new Intent(null, PuzzSelection.class);
+						Intent intent = new Intent(context, PuzzleActivity.class);
+						intent.putExtra(MainActivity.EXTRA_MESSAGE, puzzleNumber+1);
 						startActivity(intent);
                    }
                })
                .setNegativeButton("Other Puzzle", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
-                       // User cancelled the dialog
+						Intent intent = new Intent(context, PuzzSelection.class);
+						intent.putExtra(MainActivity.ACTIVITY_TYPE, "true");
+						startActivity(intent);
                    }
                });
         // Create the AlertDialog object and return it

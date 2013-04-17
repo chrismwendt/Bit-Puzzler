@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "puzzle_number";
+	public final static String ACTIVITY_TYPE = "is_puzzselect";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +31,18 @@ public class MainActivity extends Activity {
     	intent.putExtra(EXTRA_MESSAGE, message);*/
     	startActivity(intent);
     }
-    public void openPuzzleSelect(View view){
+    public void openPuzzSelect(View view){
+    	openSelectActivity(view,true);
+    }
+    public void openScoresSelect(View view){
+    	openSelectActivity(view,false);
+    }
+    private void openSelectActivity(View view, boolean puzzselect){
     	Intent intent = new Intent(this, PuzzSelection.class);
-    	startActivity(intent);
+    	String arg = "true";
+    	if (!puzzselect) arg = "false";
+    	System.out.println(arg);
+    	intent.putExtra(ACTIVITY_TYPE, arg);
+    	startActivity(intent);	
     }
 }
