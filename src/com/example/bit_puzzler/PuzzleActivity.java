@@ -15,6 +15,24 @@ public class PuzzleActivity extends Activity {
 		//TextView name = (TextView)findViewById(R.id.puzzle_name);
 		Intent intent = getIntent();
 		//name.setText(intent.getStringExtra(MainActivity.EXTRA_MESSAGE));
+		
+		TextView numberTextView = (TextView)findViewById(R.id.puzzle_number);
+		TextView titleTextView = (TextView)findViewById(R.id.puzzle_title);
+		TextView descriptionTextView = (TextView)findViewById(R.id.puzzle_description);
+		TextView inputTextView = (TextView)findViewById(R.id.input);
+		TextView outputTextView = (TextView)findViewById(R.id.output);
+		
+		String number = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		String title = "Title of puzzle goes here";
+		String description = "Description of puzzle goes here";
+		String input = "1011011";
+		String output = "1011100";
+		
+		numberTextView.setText(number);
+		titleTextView.setText(title);
+		descriptionTextView.setText(description);
+		inputTextView.setText(input);
+		outputTextView.setText(output);
 	}
 
 	@Override
