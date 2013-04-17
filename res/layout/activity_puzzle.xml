@@ -52,9 +52,15 @@
             android:text="Input" />
 
         <TextView
-            android:id="@+id/output"
+            android:id="@+id/correct_output"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Output" />
+            android:text="Correct output" />
+
+        <TextView
+            android:id="@+id/player_output"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your output" />
     
     </LinearLayout>

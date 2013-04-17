@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     	intent.putExtra(EXTRA_MESSAGE, message);*/
     	startActivity(intent);
     }
-    public void openPuzzSelect(View view){
+    public void openPuzzleSelect(View view){
     	Intent intent = new Intent(this, PuzzSelection.class);
     	startActivity(intent);
     }
