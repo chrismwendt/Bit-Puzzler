@@ -14,13 +14,15 @@
     <string name="title_activity_puzzle">PuzzleActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_puzz_selection">Select a Puzzle</string>
-    <string name="btn_1">1</string>
-    <string name="btn_2">2</string>
-    <string name="btn_3">3</string>
-    <string name="btn_4">4</string>
-    <string name="btn_5">5</string>
-    <string name="btn_6">6</string>
-    <string name="btn_7">7</string>
-    <string name="btn_8">8</string>
-    <string name="btn_9">9</string>
+    <string name="btn_1">1: Puzzle Name Goes Here</string>
+    <string name="btn_2">2: 2nd Level</string>
+    <string name="btn_3">3: On your way</string>
+    <string name="btn_4">4: Name Goes Here</string>
+    <string name="btn_5">5: Halfway there!</string>
+    <string name="btn_6">6: Another name</string>
+    <string name="btn_7">7: Still another name</string>
+    <string name="btn_8">8: Almost done</string>
+    <string name="btn_9">9: The last puzzle</string>
+    <string name="title_activity_high_scores">HighScoresActivity</string>
+
 </resources>

@@ -3,24 +3,82 @@ package com.example.bit_puzzler;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 public class PuzzSelection extends Activity {
+	private boolean puzzselect;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzz_selection);
+		String bool = getIntent().getStringExtra(MainActivity.ACTIVITY_TYPE);
+		System.out.println("PuzzSelection: arg is "+bool);
+		if (bool.equals("true"))
+			puzzselect=true;
+		else
+			puzzselect=false;
 		Button b1 = (Button)findViewById(R.id.b1);
-		b1.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+		setColor(b1,1);
+		Button b2 = (Button)findViewById(R.id.b2);
+		setColor(b2,2);
+		Button b3 = (Button)findViewById(R.id.b3);
+		setColor(b3,3);
+		Button b4 = (Button)findViewById(R.id.b4);
+		setColor(b4,4);
+		Button b5 = (Button)findViewById(R.id.b5);
+		setColor(b5,5);
+		Button b6 = (Button)findViewById(R.id.b6);
+		setColor(b6,6);
+		Button b7 = (Button)findViewById(R.id.b7);
+		setColor(b7,7);
+		Button b8 = (Button)findViewById(R.id.b8);
+		setColor(b8,8);
+		Button b9 = (Button)findViewById(R.id.b9);
+		setColor(b9,9);
 		// Show the Up button in the action bar.
 		setupActionBar();
+	}
+	
+	private void setColor(Button btn, int i){
+		if (!puzzselect) return;
+		int res = puzzStatus(i);
+		if (res==2){
+			//btn.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+		}else if (res==3){
+			btn.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+		}else if (res==1){
+			btn.getBackground().setColorFilter(0xFFFFFF00, PorterDuff.Mode.MULTIPLY);
+		}else if (res==0){
+			btn.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+		}
+	}
+	public void b1Click(View v){puzzSelect(1);}
+	public void b2Click(View v){puzzSelect(2);}
+	public void b3Click(View v){puzzSelect(3);}
+	public void b4Click(View v){puzzSelect(4);}
+	public void b5Click(View v){puzzSelect(5);}
+	public void b6Click(View v){puzzSelect(6);}
+	public void b7Click(View v){puzzSelect(7);}
+	public void b8Click(View v){puzzSelect(8);}
+	public void b9Click(View v){puzzSelect(9);}
+	public void puzzSelect(int i){
+    	Intent intent = new Intent(this, PuzzleActivity.class);
+    	String message = Integer.toString(i);
+    	intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
+    	startActivity(intent);		
+	}
+	//Returns 0 if solved, 1 if in progress, 2 if unlocked, 3 if locked
+	private int puzzStatus(int i){
+		return (i*11)%3;
 	}
 
 	/**
