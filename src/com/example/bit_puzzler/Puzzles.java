@@ -57,7 +57,7 @@ public final class Puzzles{
          * Column name indicating if the puzzle is solved
          * <P>Type: INTEGER</P>
          */
-        public static final String COLUMN_NAME_SOLVED = "sovled";
+        public static final String COLUMN_NAME_SOLVED = "solved";
         
         /**
          * Column name for the shortest program that is correct
