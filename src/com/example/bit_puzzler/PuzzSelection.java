@@ -71,17 +71,14 @@ public class PuzzSelection extends Activity {
 	public void b8Click(View v){puzzSelect(8);}
 	public void b9Click(View v){puzzSelect(9);}
 	public void puzzSelect(int i){
+		Intent intent = null;
 		if (puzzselect){
-			Intent intent = new Intent(this, PuzzleActivity.class);
-    		String message = Integer.toString(i);
-    		intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
-    		startActivity(intent);
+			intent = new Intent(this, PuzzleActivity.class);
 		}else{
-			Intent intent = new Intent(this, HighScoresActivity.class);
-			String message = Integer.toString(i);
-			intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
-			startActivity(intent);
+			intent = new Intent(this, HighScoresActivity.class);
 		}
+		intent.putExtra(MainActivity.EXTRA_MESSAGE, i);
+		startActivity(intent);
 	}
 	//Returns 0 if solved, 1 if in progress, 2 if unlocked, 3 if locked
 	private int puzzStatus(int i){
