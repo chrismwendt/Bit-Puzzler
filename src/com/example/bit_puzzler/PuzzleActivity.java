@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class PuzzleActivity extends Activity implements OnClickListener {
+	public String input;
 	public String correctOutput;
 	public int puzzleNumber;
 	
@@ -38,7 +39,7 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		String number = String.valueOf(puzzleNumber);
 		String title = "Title of puzzle goes here";
 		String description = "Description of puzzle goes here";
-		String input = "1011011";
+		input = "1011011";
 		correctOutput = "1101011";
 		
 		numberTextView.setText(number);
@@ -68,16 +69,25 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		if (playerOutput.equals(correctOutput)) {
 			makeCompleteDialog().show();
 		} else {
-			playerOutputTextView.setText("Incorrect");
+			if (playerOutput.equals("")) {
+				playerOutputTextView.setText("Error <-- your output");
+			} else {
+				playerOutputTextView.setText(playerOutput + " <-- your output");
+			}
 		}
 		
-		// run the program
-		// if an error occurred, display it
 		// if the output is correct, mark it as completed in the database, make Puzzle Selection and Next buttons
 	}
 
 	private String run(String program) {
-		return "1101011";
+    	int maxInstructions = 1000;
+    	Fiddler fiddler = new Fiddler(program, input);
+    	boolean success = fiddler.execute(maxInstructions);
+    	if (!success) {
+    		return "";
+    	} else {
+    		return fiddler.toString().substring(0, correctOutput.length());
+    	}
 	}
 	
 	private AlertDialog makeCompleteDialog() {
