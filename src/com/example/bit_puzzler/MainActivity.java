@@ -1,10 +1,11 @@
 package com.example.bit_puzzler;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "puzzle_number";
@@ -13,6 +14,12 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button btnStart = (Button)findViewById(R.id.btnStart);
+        Button btnScores = (Button)findViewById(R.id.btnScores);
+        Button txtHeader = (Button)findViewById(R.id.txtHeader);
+        txtHeader.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
+        btnStart.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
+        btnScores.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
     }
 
     @Override
