@@ -11,22 +11,11 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class PuzzleHelper extends SQLiteOpenHelper{
-	private static int version = 1;
+	private static int version = 4;
 	private static final String DATABASE_NAME = "puzzles.db";
 	
 	PuzzleHelper(Context context){
 		super(context, DATABASE_NAME, null, version);
-		/* Must be called before invoking a helper
-		 * 
-		 * File file = context.getFileStreamPath(DATABASE_NAME);
-		if(!file.exists()){
-			try { 
-       // catches IOException below
-       FileOutputStream fOut = openFileOutput("puzzles.db", context.MODE_PRIVATE);
-           } catch (IOException ioe) 
-      {ioe.printStackTrace();}
-		}
-		*/
 	}
 
 	@Override
@@ -42,8 +31,6 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 		
 	}
 	public void add(int id, String puzzname, String description, String input, String output, String program, boolean solved, int hiscore){
-		if(program == null)
-			version++;
 		int isolved = 0;
 		if (solved) isolved++;
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -68,7 +55,7 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int original, int updated) {
-		if(updated >= 2){
+		if(updated >= 2 && original < 2){
 			ContentValues values = new ContentValues(8);
 	    	values.put(Puzzles.Schema._ID, 2);
 	    	values.put(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME, "Moving Around");
@@ -85,7 +72,7 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 	    		;
 	    	}
 		}
-		else if(updated >= 3){
+		if(updated >= 3&& original < 3){
 			ContentValues values = new ContentValues(8);
 	    	values.put(Puzzles.Schema._ID, 3);
 	    	values.put(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME, "Going around the block");
@@ -102,11 +89,11 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 	    		;
 	    	}
 		}
-		else if(updated >= 4){
+		if(updated >= 4&& original < 4){
 			ContentValues values = new ContentValues(8);
 	    	values.put(Puzzles.Schema._ID, 4);
 	    	values.put(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME, "An Advanced Puzzle");
-	    	values.put(Puzzles.Schema.COLUMN_NAME_DESCRIPTION, "Move the memory pointer to the left and flip the bit using '>' & '*'");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_DESCRIPTION, "Use everything you've learned here");
 	    	values.put(Puzzles.Schema.COLUMN_NAME_INPUT, "1011011");
 	    	values.put(Puzzles.Schema.COLUMN_NAME_OUTPUT, "1101011");
 	    	values.put(Puzzles.Schema.COLUMN_NAME_PROGRAM, (String) null);
@@ -134,10 +121,5 @@ public class PuzzleHelper extends SQLiteOpenHelper{
     	values.put(Puzzles.Schema.COLUMN_NAME_SOLVED, false);
     	values.put(Puzzles.Schema.COLUMN_NAME_HISCORE, -1);
     	db.insert(Puzzles.Schema.TABLE_NAME, null, values);
-	}
-	public static void main(String[] args){
-		PuzzleHelper ph = new PuzzleHelper(null);
-		ph.add(1, "Puzz", "None", "1010", "1001", "Prog", true, 21);
-		ph.printall();
 	}
 }
