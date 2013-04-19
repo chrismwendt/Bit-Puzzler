@@ -3,42 +3,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:orientation="vertical"
+    android:background="@drawable/back"
     >
 
 	
 
-	<ScrollView android:id="@+id/ScrollView01"
-	android:layout_width="wrap_content" android:layout_height="150dip">
-		<TextView android:layout_width="fill_parent"
+<!-- 	<ScrollView android:id="@+id/ScrollView01" -->
+<!-- 	android:layout_width="wrap_content" android:layout_height="150dip"> -->
+<!-- 		<TextView android:layout_width="fill_parent" -->
+<!-- 		android:layout_height="wrap_content" -->
+<!-- 		android:text="@string/main_title" -->
+<!-- 	    android:textColor="#e62" -->
+<!-- 	    android:textSize="70sp" -->
+<!--         android:layout_gravity="center" -->
+<!--         android:gravity="center" -->
+<!-- 	    android:typeface="serif" -->
+<!-- 	    android:textStyle="bold"> -->
+<!-- 		</TextView> -->
+<!-- 	</ScrollView> -->
+
+	<Button android:id="@+id/txtHeader"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/main_title"
-	    android:textColor="#e62"
-	    android:textSize="70px"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:gravity="center"
+	    android:textColor="#143"
+	    android:textSize="70sp"
+	    android:layout_weight="1"
 	    android:typeface="serif"
-	    android:textStyle="bold">
-		</TextView>
-	</ScrollView>
+	    android:textStyle="bold"/>
 
-
-    <Button
+    <Button android:id="@+id/btnStart"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="openPuzzSelect"
         android:layout_weight="1"
-        android:text="@string/btn_start" />
-    <Button
+        android:textColor="#bea"
+        android:text="@string/btn_start"
+        android:typeface="serif"
+	    android:textStyle="bold"
+	    android:textSize="40sp" />
+    <Button android:id="@+id/btnScores"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="openScoresSelect"
         android:layout_weight="1"
-        android:text="@string/btn_scores" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/btn_settings" />
+        android:textColor="#bea"
+        android:text="@string/btn_scores"
+        android:typeface="serif"
+	    android:textStyle="bold"
+	    android:textSize="40sp" />
+<!--     <Button -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_weight="1" -->
+<!--         android:text="@string/btn_settings" /> -->
 
 </LinearLayout>

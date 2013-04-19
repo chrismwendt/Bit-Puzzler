@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -35,12 +37,17 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		Button runButton = (Button)findViewById(R.id.button_run_program);
 		runButton.setOnClickListener(this);
 		
-		// TODO get these from the database
+		System.out.println("PUZZLE NUMBER: " + puzzleNumber);
+		PuzzleHelper fetch = new PuzzleHelper(this);
+		SQLiteDatabase reader = fetch.getReadableDatabase();
+		Cursor data = reader.query(Puzzles.Schema.TABLE_NAME, null, "_ID='" + puzzleNumber + "'", null, null, null, null);
+		data.moveToNext();
+		
 		String number = String.valueOf(puzzleNumber);
-		String title = "Title of puzzle goes here";
-		String description = "Description of puzzle goes here";
-		input = "1011011";
-		correctOutput = "1101011";
+		String title = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
+		String description = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_DESCRIPTION));
+		input = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_INPUT));
+		correctOutput = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_OUTPUT));
 		
 		numberTextView.setText(number);
 		titleTextView.setText(title);
