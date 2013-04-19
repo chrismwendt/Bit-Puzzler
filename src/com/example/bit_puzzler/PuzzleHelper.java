@@ -7,12 +7,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class PuzzleHelper extends SQLiteOpenHelper{
-	private static int version = 2;
+	private static int version = 1;
 	private static final String DATABASE_NAME = "puzzles.db";
-	private static Connection con;
 	
 	PuzzleHelper(Context context){
 		super(context, DATABASE_NAME, null, version);
@@ -68,7 +68,7 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int original, int updated) {
-		if(updated == 2){
+		if(updated >= 2){
 			ContentValues values = new ContentValues(8);
 	    	values.put(Puzzles.Schema._ID, 2);
 	    	values.put(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME, "Moving Around");
@@ -78,7 +78,46 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 	    	values.put(Puzzles.Schema.COLUMN_NAME_PROGRAM, (String) null);
 	    	values.put(Puzzles.Schema.COLUMN_NAME_SOLVED, false);
 	    	values.put(Puzzles.Schema.COLUMN_NAME_HISCORE, -1);
-	    	db.insert(Puzzles.Schema.TABLE_NAME, null, values);
+	    	try{
+	    		db.insert(Puzzles.Schema.TABLE_NAME, null, values);
+	    	}
+	    	catch(SQLiteException e){
+	    		;
+	    	}
+		}
+		else if(updated >= 3){
+			ContentValues values = new ContentValues(8);
+	    	values.put(Puzzles.Schema._ID, 3);
+	    	values.put(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME, "Going around the block");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_DESCRIPTION, "The '[' command will continue all instructions between it & ']' until it arrives at a 0 after the instructions");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_INPUT, "11110");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_OUTPUT, "00000");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_PROGRAM, (String) null);
+	    	values.put(Puzzles.Schema.COLUMN_NAME_SOLVED, false);
+	    	values.put(Puzzles.Schema.COLUMN_NAME_HISCORE, -1);
+	    	try{
+	    		db.insert(Puzzles.Schema.TABLE_NAME, null, values);
+	    	}
+	    	catch(SQLiteException e){
+	    		;
+	    	}
+		}
+		else if(updated >= 4){
+			ContentValues values = new ContentValues(8);
+	    	values.put(Puzzles.Schema._ID, 4);
+	    	values.put(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME, "An Advanced Puzzle");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_DESCRIPTION, "Move the memory pointer to the left and flip the bit using '>' & '*'");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_INPUT, "1011011");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_OUTPUT, "1101011");
+	    	values.put(Puzzles.Schema.COLUMN_NAME_PROGRAM, (String) null);
+	    	values.put(Puzzles.Schema.COLUMN_NAME_SOLVED, false);
+	    	values.put(Puzzles.Schema.COLUMN_NAME_HISCORE, -1);
+	    	try{
+	    		db.insert(Puzzles.Schema.TABLE_NAME, null, values);
+	    	}
+	    	catch(SQLiteException e){
+	    		;
+	    	}
 		}
 		//Find last ID and add all new ids
 	}
