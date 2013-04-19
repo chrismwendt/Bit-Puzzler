@@ -1,6 +1,11 @@
 package com.example.bit_puzzler;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +25,23 @@ public class MainActivity extends Activity {
         txtHeader.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         btnStart.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         btnScores.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
+        File file = getFileStreamPath("puzzles.db");
+        int maker = 0;
+        if(!file.exists()){
+        	maker = 1;
+        	try { 
+        		FileOutputStream fOut = openFileOutput("puzzles.db", MODE_PRIVATE);
+        		fOut.close();
+        	} catch (IOException ioe) 
+        	{
+        		
+        	}	
+        }
+        if(maker==1){
+        	PuzzleHelper fetch = new PuzzleHelper(this);
+        	SQLiteDatabase db = fetch.getWritableDatabase();
+        	fetch.add(1, "Placeholder", "Flip the input bit using '*'", "0", "1", (String) null, false, -1);
+        }
     }
 
     @Override
