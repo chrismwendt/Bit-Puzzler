@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,16 +50,21 @@ public class PuzzSelection extends Activity {
 	}
 	
 	private void setColor(Button btn, int i){
-		if (!puzzselect) return;
+		btn.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
+		if (!puzzselect){
+			btn.setTextColor(Color.WHITE);
+			return;
+		}
+		
 		int res = puzzStatus(i);
 		if (res==2){
-			//btn.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+			btn.setTextColor(Color.WHITE);
 		}else if (res==3){
-			btn.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+			btn.setTextColor(Color.RED);
 		}else if (res==1){
-			btn.getBackground().setColorFilter(0xFFFFFF00, PorterDuff.Mode.MULTIPLY);
+			btn.setTextColor(Color.YELLOW);
 		}else if (res==0){
-			btn.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+			btn.setTextColor(Color.GREEN);
 		}
 	}
 	public void b1Click(View v){puzzSelect(1);}
