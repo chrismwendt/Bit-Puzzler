@@ -42,18 +42,26 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		SQLiteDatabase reader = fetch.getReadableDatabase();
 		Cursor data = reader.query(Puzzles.Schema.TABLE_NAME, null, "_ID='" + puzzleNumber + "'", null, null, null, null);
 		data.moveToNext();
+		if(data.moveToLast()==false){
+			numberTextView.setText(String.valueOf(puzzleNumber));
+			titleTextView.setText("This puzzle isn't finished yet");
+			descriptionTextView.setText("An unfinished puzzle");
+			inputTextView.setText("" + " <-- input");
+			correctOutputTextView.setText("" + " <-- correct output");
+		}
+		else{
+			String number = String.valueOf(puzzleNumber);
+			String title = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
+			String description = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_DESCRIPTION));
+			input = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_INPUT));
+			correctOutput = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_OUTPUT));
+			numberTextView.setText(number);
+			titleTextView.setText(title);
+			descriptionTextView.setText(description);
+			inputTextView.setText(input + " <-- input");
+			correctOutputTextView.setText(correctOutput + " <-- correct output");
+		}
 		
-		String number = String.valueOf(puzzleNumber);
-		String title = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
-		String description = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_DESCRIPTION));
-		input = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_INPUT));
-		correctOutput = data.getString(data.getColumnIndex(Puzzles.Schema.COLUMN_NAME_OUTPUT));
-		
-		numberTextView.setText(number);
-		titleTextView.setText(title);
-		descriptionTextView.setText(description);
-		inputTextView.setText(input + " <-- input");
-		correctOutputTextView.setText(correctOutput + " <-- correct output");
 	}
 
 	@Override
