@@ -3,6 +3,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.simpledb.AmazonSimpleDBClient;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;

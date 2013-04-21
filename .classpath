@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="/Users/landonsandy/Desktop/Bit-Puzzler/libs/aws-android-sdk-1.4.6-debug.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

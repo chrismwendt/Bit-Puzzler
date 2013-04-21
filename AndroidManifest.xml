@@ -5,9 +5,9 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="1"
+        android:minSdkVersion="3"
         android:targetSdkVersion="17" />
-
+	<uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -36,6 +36,10 @@
         <activity
             android:name="com.example.bit_puzzler.HighScoresActivity"
             android:label="@string/title_activity_high_scores" >
+        </activity>
+        <activity
+            android:name="com.example.bit_puzzler.AddScoreActivity"
+            android:label="@string/title_activity_add_score" >
         </activity>
     </application>
 

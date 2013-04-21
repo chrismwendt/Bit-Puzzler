@@ -108,11 +108,20 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 	private AlertDialog makeCompleteDialog() {
 		final Context context = this;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Puzzle complete! Go to the next one or back to the selection page.")
+        builder.setMessage("Puzzle complete! Go back to the selection page, submit you score, or go on to the next puzzle.")
                .setPositiveButton("Next", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
 						Intent intent = new Intent(context, PuzzleActivity.class);
 						intent.putExtra(MainActivity.EXTRA_MESSAGE, puzzleNumber+1);
+						startActivity(intent);
+                   }
+               })
+               
+               .setNeutralButton("Submit Highscore", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+						Intent intent = new Intent(context, AddScoreActivity.class);
+						intent.putExtra("HSScore", input.length());
+						intent.putExtra("HSLevel", puzzleNumber);
 						startActivity(intent);
                    }
                })

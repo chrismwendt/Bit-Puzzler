@@ -14,8 +14,6 @@
  */
 package com.example.bit_puzzler;
 
-import java.util.Locale;
-
 public class Constants {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // This sample App is for demonstration purposes only.
@@ -26,13 +24,5 @@ public class Constants {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	public static final String ACCESS_KEY_ID = "AKIAJQA2OYYRKD3NVVLA";
 	public static final String SECRET_KEY = "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";
-    
-	public static final String PICTURE_BUCKET = "picture-bucket";
-	public static final String PICTURE_NAME = "NameOfThePicture";
-	
-	
-	public static String getBuckets() {
-		return ("my-unique-name" + ACCESS_KEY_ID + PICTURE_BUCKET).toLowerCase(Locale.US);
-	}
-	
+
 }

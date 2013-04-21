@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:background="@drawable/back2" >
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.07" 
+   		 android:gravity="center"
+        android:text="Submit Score"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff" />
+    	
+    <LinearLayout 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_width="fill_parent"
+    	android:gravity="center_horizontal|center_vertical" android:layout_height="wrap_content">
+        <RelativeLayout 
+        	android:layout_width="fill_parent" 
+        	android:id="@+id/relativeLayout1" 
+        	android:layout_height="112dp">
+
+            <EditText
+                android:id="@+id/player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/textView2"
+                android:background="#ffffff"
+                android:gravity="center_vertical" >
+
+                <requestFocus></requestFocus>
+            </EditText>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/player"
+                android:layout_alignBottom="@+id/player"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Player:"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff" >
+</TextView>
+
+            <TextView
+                android:id="@+id/ScoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/player"
+                android:layout_centerHorizontal="true"
+                android:text="Score"
+   				android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffff" />
+
+        </RelativeLayout>        	
+    </LinearLayout>
+
+    <LinearLayout 
+    	android:id="@+id/linearLayout2" 
+    	android:layout_width="fill_parent"
+    	android:gravity="center_horizontal|center_vertical" android:layout_height="wrap_content">        	
+    </LinearLayout>
+    <LinearLayout 
+    	android:id="@+id/linearLayout3" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:gravity="center_horizontal|center_vertical">
+
+             <Button
+                 android:id="@+id/cancelButton"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:background="#dddddd"
+                 android:text="Cancel" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#dddddd"
+            android:text="Add" >
+</Button>
+   
+    </LinearLayout>
+    	
+</LinearLayout> 
