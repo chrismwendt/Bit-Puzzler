@@ -74,22 +74,32 @@
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"
     	android:gravity="center_horizontal|center_vertical">
-
-             <Button
-                 android:id="@+id/cancelButton"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:background="#dddddd"
-                 android:text="Cancel" />
+        <RelativeLayout 
+        	android:layout_width="fill_parent" 
+        	android:id="@+id/relativeLayout1" 
+        	android:layout_height="112dp">
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="65dp"
             android:background="#dddddd"
-            android:text="Add" >
-</Button>
-   
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="63dp"
+            android:background="#dddddd"
+            android:text="Cancel" />
+
+   </RelativeLayout>
     </LinearLayout>
     	
 </LinearLayout> 

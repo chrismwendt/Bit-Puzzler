@@ -1,5 +1,6 @@
 package com.example.bit_puzzler;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -8,8 +9,11 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.services.simpledb.AmazonSimpleDBClient;
 import com.amazonaws.services.simpledb.model.Attribute;
 import com.amazonaws.services.simpledb.model.Item;
+import com.amazonaws.services.simpledb.model.PutAttributesRequest;
+import com.amazonaws.services.simpledb.model.ReplaceableAttribute;
 import com.amazonaws.services.simpledb.model.SelectRequest;
 import com.amazonaws.services.simpledb.model.SelectResult;
+import com.amazonaws.services.simpledb.util.SimpleDBUtils;
 
 public class HighscoresHelper {
 	protected String nextToken;
@@ -80,5 +84,23 @@ public class HighscoresHelper {
 		}
 		
 		return 0;		
-	}	
+	}
+	public void addHighScore( HighScore score, int level ) {
+		String paddedScore = SimpleDBUtils.encodeZeroPadding( score.getScore(), 10 );
+		
+		ReplaceableAttribute playerAttribute = new ReplaceableAttribute( "player", score.getPlayer(), Boolean.TRUE );
+		ReplaceableAttribute scoreAttribute = new ReplaceableAttribute( "score", paddedScore, Boolean.TRUE );
+		
+		List<ReplaceableAttribute> attrs = new ArrayList<ReplaceableAttribute>(2);
+		attrs.add( playerAttribute );
+		attrs.add( scoreAttribute );
+		
+		PutAttributesRequest par = new PutAttributesRequest( "HighScores"+level, score.getPlayer(), attrs);		
+		try {
+			this.sdbClient.putAttributes( par );
+		}
+		catch ( Exception exception ) {
+			System.out.println( "EXCEPTION = " + exception );
+		}
+	}
 }

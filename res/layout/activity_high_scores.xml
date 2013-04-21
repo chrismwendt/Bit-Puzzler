@@ -16,7 +16,7 @@
         android:layout_below="@+id/HSTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text=" "
+        android:text="Loading..."
         android:textColor="#ffffff"
         android:textSize="20sp" />
 
