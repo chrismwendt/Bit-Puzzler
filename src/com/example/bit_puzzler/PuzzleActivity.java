@@ -50,6 +50,8 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 			descriptionTextView.setText("An unfinished puzzle");
 			inputTextView.setText("" + " <-- input");
 			correctOutputTextView.setText("" + " <-- correct output");
+			input = "";
+			correctOutput = "";
 		}
 		else{
 			String number = String.valueOf(puzzleNumber);
