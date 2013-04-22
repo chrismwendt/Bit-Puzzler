@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class PuzzleHelper extends SQLiteOpenHelper{
-	private static int version = 4;
+	private static int version = 1;
 	private static final String DATABASE_NAME = "puzzles.db";
 	
 	PuzzleHelper(Context context){
@@ -29,6 +29,15 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 				+ Puzzles.Schema.COLUMN_NAME_SOLVED + " INTEGER,"
 				+ Puzzles.Schema.COLUMN_NAME_HISCORE + " INTEGER);");
 		
+	}
+	public Object get(int puzzle_number, String column_name){
+		SQLiteDatabase db = getReadableDatabase();
+		Cursor cursor = db.query(Puzzles.Schema.TABLE_NAME, null, "_ID='"+puzzle_number+"'", null, null, null, null);
+		cursor.moveToNext();
+		if(column_name.equals(Puzzles.Schema.COLUMN_NAME_HISCORE)||column_name.equals(Puzzles.Schema.COLUMN_NAME_SOLVED))
+			return cursor.getInt(cursor.getColumnIndex(column_name));
+		else
+			return cursor.getString(cursor.getColumnIndex(column_name));
 	}
 	public void add(int id, String puzzname, String description, String input, String output, String program, boolean solved, int hiscore){
 		int isolved = 0;
@@ -110,6 +119,7 @@ public class PuzzleHelper extends SQLiteOpenHelper{
 	}
 	@Override
 	public void onDowngrade(SQLiteDatabase db, int original, int downgrade){
+		System.err.println("DROP");
 		db.delete(Puzzles.Schema.TABLE_NAME, null, null);
 		ContentValues values = new ContentValues(8);
     	values.put(Puzzles.Schema._ID, 1);
