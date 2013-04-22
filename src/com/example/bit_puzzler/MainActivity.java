@@ -32,9 +32,7 @@ public class MainActivity extends Activity {
         btnStart.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         btnScores.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         File file = getFileStreamPath("puzzles.db");
-        int maker = 0;
         if(!file.exists()){
-        	maker = 1;
         	try { 
         		FileOutputStream fOut = openFileOutput("puzzles.db", MODE_PRIVATE);
         		fOut.close();
@@ -43,11 +41,21 @@ public class MainActivity extends Activity {
         		
         	}	
         }
-        if(maker==1){
-        	PuzzleHelper fetch = new PuzzleHelper(this);
-        	SQLiteDatabase db = fetch.getWritableDatabase();
-        	fetch.add(1, "Placeholder", "Flip the input bit using '*'", "0", "1", (String) null, false, -1);
-        }
+        PuzzleHelper fetch = new PuzzleHelper(this);
+        SQLiteDatabase db = fetch.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS '"+Puzzles.Schema.TABLE_NAME +"'");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + Puzzles.Schema.TABLE_NAME + " (" + Puzzles.Schema._ID + " INTEGER PRIMARY KEY,"
+				+ Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME + " TEXT,"
+				+ Puzzles.Schema.COLUMN_NAME_DESCRIPTION + " TEXT,"
+				+ Puzzles.Schema.COLUMN_NAME_INPUT + " TEXT,"
+				+ Puzzles.Schema.COLUMN_NAME_OUTPUT + " TEXT,"
+				+ Puzzles.Schema.COLUMN_NAME_PROGRAM + " TEXT,"
+				+ Puzzles.Schema.COLUMN_NAME_SOLVED + " INTEGER,"
+				+ Puzzles.Schema.COLUMN_NAME_HISCORE + " INTEGER);");
+        fetch.add(1, "Getting Started", "Flip the input bit using '*'", "0", "1", (String) null, false, -1);
+        fetch.add(2, "Moving Around", "Move the memory pointer to the left and right using '<' & '>'", "00", "01", (String) null, false, -1);
+        fetch.add(3, "Going around the block", "The '[' command will continue perform instructions between itself & ']' until it arrives at a 0 after the instructions", "11110", "00000", (String) null, false, -1);
+        fetch.add(4, "An Advanced Puzzle", "Use everything you've learned on this puzzle", "1011011", "1101011", (String) null, false, -1);
     }
 
     @Override
@@ -69,7 +77,6 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(this, PuzzSelection.class);
     	String arg = "true";
     	if (!puzzselect) arg = "false";
-    	System.out.println(arg);
     	intent.putExtra(ACTIVITY_TYPE, arg);
     	startActivity(intent);	
     }
