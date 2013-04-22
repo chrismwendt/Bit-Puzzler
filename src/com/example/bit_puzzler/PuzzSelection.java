@@ -22,7 +22,6 @@ public class PuzzSelection extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzz_selection);
 		String bool = getIntent().getStringExtra(MainActivity.ACTIVITY_TYPE);
-		System.out.println("PuzzSelection: arg is "+bool);
 		if (bool.equals("true"))
 			puzzselect=true;
 		else

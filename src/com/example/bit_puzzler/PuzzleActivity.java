@@ -39,7 +39,6 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		Button runButton = (Button)findViewById(R.id.button_run_program);
 		runButton.setOnClickListener(this);
 		
-		System.out.println("PUZZLE NUMBER: " + puzzleNumber);
 		PuzzleHelper fetch = new PuzzleHelper(this);
 		SQLiteDatabase reader = fetch.getReadableDatabase();
 		Cursor data = reader.query(Puzzles.Schema.TABLE_NAME, null, "_ID='" + puzzleNumber + "'", null, null, null, null);
