@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -48,6 +50,8 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 			descriptionTextView.setText("An unfinished puzzle");
 			inputTextView.setText("" + " <-- input");
 			correctOutputTextView.setText("" + " <-- correct output");
+			input = "";
+			correctOutput = "";
 		}
 		else{
 			String number = String.valueOf(puzzleNumber);
@@ -62,6 +66,23 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 			correctOutputTextView.setText(correctOutput + " <-- correct output");
 		}
 		
+		TextView t1 = (TextView)findViewById(R.id.puzzle_number);
+		TextView t2 = (TextView)findViewById(R.id.puzzle_title);
+		TextView t3 = (TextView)findViewById(R.id.puzzle_description);
+		TextView t4 = (TextView)findViewById(R.id.input);
+		TextView t5 = (TextView)findViewById(R.id.correct_output);
+		TextView t6 = (TextView)findViewById(R.id.player_output);
+		t1.setTextColor(Color.WHITE);
+		t2.setTextColor(Color.WHITE);
+		t3.setTextColor(Color.WHITE);
+		t4.setTextColor(Color.WHITE);
+		t5.setTextColor(Color.WHITE);
+		t6.setTextColor(Color.WHITE);
+		EditText e1 = (EditText)findViewById(R.id.edit_program);
+		e1.setTextColor(Color.WHITE);
+		Button b1 = (Button)findViewById(R.id.button_run_program);
+		b1.setTextColor(Color.WHITE);
+		b1.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
 	}
 
 	@Override

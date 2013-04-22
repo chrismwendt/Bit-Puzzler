@@ -3,7 +3,8 @@
     	android:layout_width="match_parent"
     	android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".PuzzleActivity" >
+        tools:context=".PuzzleActivity"
+        android:background="@drawable/back2" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <EditText
+         <EditText
                 android:id="@+id/edit_program"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
