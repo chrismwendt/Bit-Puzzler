@@ -52,10 +52,15 @@ public class MainActivity extends Activity {
 				+ Puzzles.Schema.COLUMN_NAME_PROGRAM + " TEXT,"
 				+ Puzzles.Schema.COLUMN_NAME_SOLVED + " INTEGER,"
 				+ Puzzles.Schema.COLUMN_NAME_HISCORE + " INTEGER);");
-        fetch.add(1, "Getting Started", "Flip the input bit using '*'", "0", "1", (String) null, false, -1);
-        fetch.add(2, "Moving Around", "Move the memory pointer to the left and right using '<' & '>'", "00", "01", (String) null, false, -1);
-        fetch.add(3, "Going around the block", "The '[' command will continue perform instructions between itself & ']' until it arrives at a 0 after the instructions", "11110", "00000", (String) null, false, -1);
-        fetch.add(4, "An Advanced Puzzle", "Use everything you've learned on this puzzle", "1011011", "1101011", (String) null, false, -1);
+        fetch.add(1, "Getting Started", "Flip the input bit using '*'.", "0", "1", (String) null, false, -1);
+        fetch.add(2, "Moving Around", "Move the memory pointer to the left and right using '<' & '>'.", "00", "01", (String) null, false, -1);
+        fetch.add(3, "Going around the block", "The '[' command will continue perform instructions between itself & ']' until it arrives at a 0 after the instructions.", "11110", "00000", (String) null, false, -1);
+        fetch.add(4, "An Advanced Puzzle", "Combined moving and flipping.", "1011011", "1101011", (String) null, false, -1);
+        fetch.add(5, "Nested Loops", "Use nested loops to solve this puzzle.", "1110111011100", "0001000100010", (String) null, false, -1);
+        fetch.add(6, "Alternating", "Bits alternate between 0 and 1.", "010101010101011", "000000000000001", (String) null, false, -1);
+        fetch.add(7, "Nested Loops", "Use nested loops to solve this puzzle.", "1110111011100", "0001000100010", (String) null, false, -1);
+        fetch.add(8, "Nested Loops", "Use nested loops to solve this puzzle.", "1110111011100", "0001000100010", (String) null, false, -1);
+        fetch.add(9, "Nested Loops", "Use nested loops to solve this puzzle.", "1110111011100", "0001000100010", (String) null, false, -1);
     }
 
     @Override
