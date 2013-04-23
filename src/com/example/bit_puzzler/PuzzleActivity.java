@@ -21,12 +21,13 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 	public String input;
 	public String correctOutput;
 	public int puzzleNumber;
-	
+	private PuzzleHelper db;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzzle);
-		
+		PuzzleHelper db = new PuzzleHelper(this);
 		//TextView name = (TextView)findViewById(R.id.puzzle_name);
 		Intent intent = getIntent();
 		puzzleNumber = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 1);
@@ -113,7 +114,11 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		
 		// if the output is correct, mark it as completed in the database, make Puzzle Selection and Next buttons
 	}
-
+	@Override
+	public void onStop (){
+		super.onStop();
+		db.saveProgram(puzzleNumber, (String)((TextView)findViewById(R.id.edit_program)).getText());
+	}
 	private String run(String program) {
     	int maxInstructions = 1000;
     	Fiddler fiddler = new Fiddler(program, input);
