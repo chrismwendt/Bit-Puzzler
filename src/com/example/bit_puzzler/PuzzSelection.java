@@ -16,6 +16,7 @@ import android.widget.Button;
 
 public class PuzzSelection extends Activity {
 	private boolean puzzselect;
+	PuzzleHelper db;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class PuzzSelection extends Activity {
 		else
 			puzzselect=false;
 		
-		PuzzleHelper db = new PuzzleHelper(this);
+		db = new PuzzleHelper(this);
 		
 		Button b1 = (Button)findViewById(R.id.b1);
 		b1.setText((String)db.get(1, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
@@ -97,9 +98,18 @@ public class PuzzSelection extends Activity {
 		intent.putExtra(MainActivity.EXTRA_MESSAGE, i);
 		startActivity(intent);
 	}
-	//Returns 0 if solved, 1 if in progress, 2 if unlocked, 3 if locked
+	
 	private int puzzStatus(int i){
-		return (i*11)%3;
+		boolean solved = (Integer)db.get(i, Puzzles.Schema.COLUMN_NAME_SOLVED) == 1;
+		String program = (String)db.get(i, Puzzles.Schema.COLUMN_NAME_PROGRAM);
+		boolean inProgress = program != null && !"".equals(program);
+		if (solved) {
+			return 0;
+		} else if (inProgress) {
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 
 	/**
