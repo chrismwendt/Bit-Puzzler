@@ -36,6 +36,7 @@
                 android:ems="10"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:textCursorDrawable="@null"
                 android:typeface="monospace" >
 
                 <requestFocus />
