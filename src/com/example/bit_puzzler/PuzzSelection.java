@@ -29,7 +29,12 @@ public class PuzzSelection extends Activity {
 			puzzselect=false;
 		
 		db = new PuzzleHelper(this);
-		
+		// Show the Up button in the action bar.
+		setupActionBar();
+	}
+	
+	public void onResume() {
+		super.onResume();
 		Button b1 = (Button)findViewById(R.id.b1);
 		b1.setText((String)db.get(1, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b1,1);
@@ -57,8 +62,6 @@ public class PuzzSelection extends Activity {
 		Button b9 = (Button)findViewById(R.id.b9);
 		b9.setText((String)db.get(9, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b9,9);
-		// Show the Up button in the action bar.
-		setupActionBar();
 	}
 	
 	private void setColor(Button btn, int i){

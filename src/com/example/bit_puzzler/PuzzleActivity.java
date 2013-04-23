@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PuzzleActivity extends Activity implements OnClickListener {
+public class PuzzleActivity extends Activity implements OnClickListener, TextWatcher {
 	public String input;
 	public String correctOutput;
 	public int puzzleNumber;
@@ -27,7 +30,7 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzzle);
-		PuzzleHelper db = new PuzzleHelper(this);
+		db = new PuzzleHelper(this);
 		//TextView name = (TextView)findViewById(R.id.puzzle_name);
 		Intent intent = getIntent();
 		puzzleNumber = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 1);
@@ -37,6 +40,10 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		TextView descriptionTextView = (TextView)findViewById(R.id.puzzle_description);
 		TextView inputTextView = (TextView)findViewById(R.id.input);
 		TextView correctOutputTextView = (TextView)findViewById(R.id.correct_output);
+		TextView editProgram = (TextView)findViewById(R.id.edit_program);
+		String s = (String)db.get(puzzleNumber, Puzzles.Schema.COLUMN_NAME_PROGRAM);
+		editProgram.setText(s);
+		editProgram.addTextChangedListener(this);
 		Button runButton = (Button)findViewById(R.id.button_run_program);
 		runButton.setOnClickListener(this);
 		
@@ -103,6 +110,7 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		playerOutputTextView.setText(playerOutput + " <-- your output");
 		
 		if (playerOutput.equals(correctOutput)) {
+			db.saveSolved(puzzleNumber, true);
 			makeCompleteDialog().show();
 		} else {
 			if (playerOutput.equals("")) {
@@ -114,11 +122,7 @@ public class PuzzleActivity extends Activity implements OnClickListener {
 		
 		// if the output is correct, mark it as completed in the database, make Puzzle Selection and Next buttons
 	}
-	@Override
-	public void onStop (){
-		super.onStop();
-		db.saveProgram(puzzleNumber, (String)((TextView)findViewById(R.id.edit_program)).getText());
-	}
+	
 	private String run(String program) {
     	int maxInstructions = 1000;
     	Fiddler fiddler = new Fiddler(program, input);
@@ -159,5 +163,15 @@ public class PuzzleActivity extends Activity implements OnClickListener {
                });
         // Create the AlertDialog object and return it
         return builder.create();
+	}
+
+	public void afterTextChanged(Editable arg0) {
+		db.saveProgram(puzzleNumber, arg0.toString());
+	}
+
+	public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+	}
+
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
 	}
 }
