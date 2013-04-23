@@ -31,7 +31,10 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/textView2"
-                android:background="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textCursorDrawable="@null"
+                android:typeface="monospace"
                 android:gravity="center_vertical" >
 
                 <requestFocus></requestFocus>
