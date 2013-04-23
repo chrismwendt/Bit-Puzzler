@@ -26,23 +26,35 @@ public class PuzzSelection extends Activity {
 			puzzselect=true;
 		else
 			puzzselect=false;
+		
+		PuzzleHelper db = new PuzzleHelper(this);
+		
 		Button b1 = (Button)findViewById(R.id.b1);
+		b1.setText((String)db.get(1, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b1,1);
 		Button b2 = (Button)findViewById(R.id.b2);
+		b2.setText((String)db.get(2, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b2,2);
 		Button b3 = (Button)findViewById(R.id.b3);
+		b3.setText((String)db.get(3, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b3,3);
 		Button b4 = (Button)findViewById(R.id.b4);
+		b4.setText((String)db.get(4, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b4,4);
 		Button b5 = (Button)findViewById(R.id.b5);
+		b5.setText((String)db.get(5, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b5,5);
 		Button b6 = (Button)findViewById(R.id.b6);
+		b6.setText((String)db.get(6, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b6,6);
 		Button b7 = (Button)findViewById(R.id.b7);
+		b7.setText((String)db.get(7, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b7,7);
 		Button b8 = (Button)findViewById(R.id.b8);
+		b8.setText((String)db.get(8, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b8,8);
 		Button b9 = (Button)findViewById(R.id.b9);
+		b9.setText((String)db.get(9, Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME));
 		setColor(b9,9);
 		// Show the Up button in the action bar.
 		setupActionBar();
