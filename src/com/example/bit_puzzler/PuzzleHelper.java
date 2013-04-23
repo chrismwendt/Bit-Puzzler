@@ -55,6 +55,22 @@ public class PuzzleHelper extends SQLiteOpenHelper{
     	
     	db.insert(Puzzles.Schema.TABLE_NAME, null, values);
 	}
+	public void saveProgram(int level, String program){
+		SQLiteDatabase db = this.getWritableDatabase();
+		String strFilter = String.valueOf(level);
+		ContentValues args = new ContentValues(8);
+		args.put(Puzzles.Schema.COLUMN_NAME_PROGRAM, program);
+		db.update(Puzzles.Schema.TABLE_NAME, args, strFilter, null);
+		
+	}
+	public void saveSolved(int level, boolean solved){
+		SQLiteDatabase db = this.getWritableDatabase();
+		String strFilter = String.valueOf(solved);
+		ContentValues args = new ContentValues(8);
+		args.put(Puzzles.Schema.COLUMN_NAME_SOLVED, solved);
+		db.update(Puzzles.Schema.TABLE_NAME, args, strFilter, null);
+		
+	}
 	public void printall(){
 		Cursor data = this.getReadableDatabase().query(Puzzles.Schema.TABLE_NAME, null, null, null, null, null, null);
 		data.moveToNext();
