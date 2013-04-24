@@ -78,6 +78,12 @@ public class MainActivity extends Activity {
     public void openScoresSelect(View view){
     	openSelectActivity(view,false);
     }
+    public void resetScores(View view){
+    	PuzzleHelper h = new PuzzleHelper(this);
+    	for (int i = 1; i <= 9; i++) {
+    		h.saveSolved(i, false);
+    	}
+    }
     private void openSelectActivity(View view, boolean puzzselect){
     	Intent intent = new Intent(this, PuzzSelection.class);
     	String arg = "true";

@@ -42,13 +42,13 @@
         android:typeface="serif"
 	    android:textStyle="bold"
 	    android:textSize="30sp" />
-    <Button android:id="@+id/btnScores"
+    <Button android:id="@+id/btnReset"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="openScoresSelect"
+        android:onClick="resetPuzzles"
         android:layout_weight="1"
         android:textColor="#bea"
-        android:text="@string/btn_scores"
+        android:text="@string/btn_Reset"
         android:typeface="serif"
 	    android:textStyle="bold"
 	    android:textSize="30sp" />
