@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         }
         PuzzleHelper fetch = new PuzzleHelper(this);
         SQLiteDatabase db = fetch.getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS '"+Puzzles.Schema.TABLE_NAME +"'");
+        //db.execSQL("DROP TABLE IF EXISTS '"+Puzzles.Schema.TABLE_NAME +"'");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + Puzzles.Schema.TABLE_NAME + " (" + Puzzles.Schema._ID + " INTEGER PRIMARY KEY,"
 				+ Puzzles.Schema.COLUMN_NAME_PUZZLE_NAME + " TEXT,"
 				+ Puzzles.Schema.COLUMN_NAME_DESCRIPTION + " TEXT,"
