@@ -31,6 +31,8 @@ public class MainActivity extends Activity {
         txtHeader.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         btnStart.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         btnScores.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
+        Button btnReset = (Button)findViewById(R.id.btnReset);
+        btnReset.getBackground().setColorFilter(0x00000000, PorterDuff.Mode.MULTIPLY);
         File file = getFileStreamPath("puzzles.db");
         if(!file.exists()){
         	try { 
@@ -78,7 +80,7 @@ public class MainActivity extends Activity {
     public void openScoresSelect(View view){
     	openSelectActivity(view,false);
     }
-    public void resetScores(View view){
+    public void resetPuzzles(View view){
     	PuzzleHelper h = new PuzzleHelper(this);
     	for (int i = 1; i <= 9; i++) {
     		h.saveSolved(i, false);
