@@ -22,7 +22,7 @@ public class Constants {
     // to devices securely.
     // http://aws.amazon.com/articles/Mobile/4611615499399490
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	public static final String ACCESS_KEY_ID = "AKIAJQA2OYYRKD3NVVLA";
-	public static final String SECRET_KEY = "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";
+	public static final String ACCESS_KEY_ID = "XXXX";
+	public static final String SECRET_KEY = "XXXX";
 
 }
